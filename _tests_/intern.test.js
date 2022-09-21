@@ -18,8 +18,9 @@ test('get school with getSchool() method', () => {
     expect(e.getSchool()).toBe(testValue);
 });
 
-
+// if getRole() is intern
 test('getRole() return Intern', () => {
     const testValue = 'Intern';
     const e = new Intern('Foo', 1, 'intern@email.com', 'Harvard');
     expect(e.getRole()).toBe(testValue);
+});

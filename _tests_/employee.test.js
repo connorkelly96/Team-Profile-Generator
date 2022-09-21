@@ -16,6 +16,7 @@ test('set email with constructor', () => {
     expect(e.email).toBe(testValue);
 });
 
+// if getRole() is employee
 test('getRole() return Employee', () => {
     const testValue = 'Employee';
     const e = new Employee('Jason', 1, 'employee@email.com');
