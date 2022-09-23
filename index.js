@@ -237,4 +237,4 @@ function initApp() {
 }    
 
 
-indexApp();
+initApp();
