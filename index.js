@@ -23,7 +23,7 @@ const idArr = [];
 
 
 function initApp() {
-    function createManager() {
+    function addManager() {
         console.log("Start building your team profile");
         inquirer.prompt([
             {
@@ -42,13 +42,10 @@ function initApp() {
                 name: "managerId",
                 message: "What's the manager's ID?",
                 validate: answer => {
-                    const pass = answer.match(
-                        /^[1-9]\d*$/
-                    );
-                    if (pass) {
+                if (answer !== "") {
                         return true;
                     }
-                    return "Please enter a valid Manager's ID (numbers).";
+                    return "Please enter a valid Manager's ID.";
                 }
             },
             {
@@ -65,7 +62,7 @@ function initApp() {
             {
                 type: "input",
                 name: "managerOfficeNumber",
-                message: "What's the manager's office number?",
+                message: "What's the manager's office number? (format: 111111111)",
                 validate: answer => {
                     const pass = answer.match(
                         /^[1-9]\d*$/
@@ -80,12 +77,12 @@ function initApp() {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
             teamArr.push(manager);
             idArr.push(answers.managerId);
-            createTeam();
+            addTeam();
         });
     }
 
 
-    function createTeam() {
+    function addTeam() {
         inquirer.prompt([
             {
                 type: "list",
@@ -129,13 +126,10 @@ function initApp() {
                 name: "engineerId",
                 message: "What's the engineer's id?",
                 validate: answer => {
-                    const pass = answer.match(
-                        /^[1-9]\d*$/
-                    );
-                    if (pass) {
+                if (answer !== "") {
                         return true;
                     }
-                    return "Please enter a valid Engineer's ID (numbers).";
+                    return "Please enter a valid Engineer's ID.";
                 }
             },
             {
@@ -164,7 +158,7 @@ function initApp() {
             const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
             teamArr.push(engineer);
             idArr.push(answers.engineerId);
-            createTeam();
+            addTeam();
         });
     }
 
@@ -186,13 +180,10 @@ function initApp() {
                 name: "internId",
                 message: "What's theintern's id?",
                 validate: answer => {
-                    const pass = answer.match(
-                        /^[1-9]\d*$/
-                    );
-                    if (pass) {
+                if (answer !== "") {
                         return true;
                     }
-                    return "Please enter a valid Intern's ID (numbers).";
+                    return "Please enter a valid Intern's ID.";
                 }
             },
             {
@@ -221,7 +212,7 @@ function initApp() {
             const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
             teamArr.push(intern);
             idArr.push(answers.internId);
-            createTeam();
+            addTeam();
         });
     }
     function buildTeam() {
@@ -233,7 +224,7 @@ function initApp() {
         fs.writeFileSync(outputPath, render(teamArr), "utf-8");
     }
 
-    createManager();
+    addManager();
 }    
 
 
