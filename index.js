@@ -12,8 +12,8 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 
-const OUTPUT_DIR = path.resolve(__dirname, 'dist')
-const outputPath = path.join(OUTPUT_DIR, 'index.html');
+const DIST_DIR = path.resolve(__dirname, 'dist')
+const outputPath = path.join(DIST_DIR, 'index.html');
 
 const render = require('./src/page-template.js');
 
@@ -103,7 +103,7 @@ function initApp() {
                     addIntern();
                     break;
                 default:
-                    buildTeam();
+                    generateHTML();
             }
         });
     }
@@ -178,7 +178,7 @@ function initApp() {
             {
                 type: "input",
                 name: "internId",
-                message: "What's theintern's id?",
+                message: "What's the intern's id?",
                 validate: answer => {
                 if (answer !== "") {
                         return true;
@@ -215,10 +215,11 @@ function initApp() {
             addTeam();
         });
     }
-    function buildTeam() {
-        // Create the output directory if the output path doesn't exist
-        if (!fs.existsSync(OUTPUT_DIR)) {
-            fs.mkdirSync(OUTPUT_DIR)
+    function generateHTML() {
+
+        // Create dist directory for index.html if it doesnt exist
+        if (!fs.existsSync(DIST_DIR)) {
+            fs.mkdirSync(DIST_DIR)
         }
         console.log("Generating Team Profile.... ");
         fs.writeFileSync(outputPath, render(teamArr), "utf-8");
