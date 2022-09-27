@@ -6,3 +6,5 @@ Screenshots:
 ![image](https://user-images.githubusercontent.com/108823822/192427625-bad7527b-c1eb-4e0f-b048-9cb9e1651de8.png)
 
 Walkthrough: https://drive.google.com/file/d/1v_ehvhMQRCJvSwevUsY94oPzYSroN_Za/view
+
+Site: https://connorkelly96.github.io/Team-Profile-Generator/
